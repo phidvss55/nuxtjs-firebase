@@ -1,7 +1,7 @@
 <template>
   <div>
     <nuxt-link to="/jokes" class="btn btn-primary"> Back to Jokes </nuxt-link>
-    <h2>{{ joke }}</h2>
+    <h2 v-if="joke">{{ joke }}</h2>
     <hr />
     <small>Joke ID: {{ $route.params.id }}</small>
   </div>
