@@ -1,6 +1,6 @@
 <template>
     <header class="header">
-        <h1 class="title">Dad Jokes</h1>
+        <h1 class="title">DadJokes</h1>
         <ul>
             <li>
                 <nuxt-link to='/'>Home</nuxt-link>
@@ -34,6 +34,9 @@ export default {
     .header .title  {
         font-size: 3rem;
         color: #526488;
+        font-weight: 800;
+        letter-spacing: 10px;
+        margin-left: 10px;
     }
 
     .header ul {
@@ -46,5 +49,6 @@ export default {
         color: #fff;
         padding: 0.3rem 1rem;
         margin-right: 0.5rem;
+        border-radius: 5px;
     }
 </style>

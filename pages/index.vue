@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div class="">
     <h2>Welcome to the best corny dad jokes app on the web</h2>
   </div>
 </template>
@@ -21,7 +21,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .container {
   margin: 0 auto;
   min-height: 100vh;
