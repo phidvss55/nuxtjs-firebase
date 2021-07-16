@@ -1,18 +1,17 @@
 <template>
-  <div class="container">
-    <DefaultHeader/>
-    <h1>Default layouts</h1>
+  <div class="">
+    <h1>Public layouts</h1>
+    <header>Header section</header>
+    <div>Banner section</div>
+    <div>Who section</div>
     <nuxt/>
   </div>
 </template>
 
 <script>
 
-import DefaultHeader from '../components/DefaultHeader';
-
 export default {
   components: {
-    DefaultHeader
   }  
 }
 </script>
@@ -28,11 +27,11 @@ export default {
     font-family: Arial, Helvetica, sans-serif;
     font-size: 1rem;
     line-height: 1.6;
-    /* background: #f4f4f4; */
+    background: #f4f4f4;
   }
 
   a {
-    /* color: #666; */
+    color: #666;
     text-decoration: none;  
   }
 
