@@ -37,6 +37,9 @@ header {
           text-decoration: underline;
           color: #8d8d8d;
         }
+        &.nuxt-link-exact-active {
+          color: red;
+        }
       }
     }
   }
