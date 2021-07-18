@@ -1,7 +1,7 @@
 <template>
   <div>
-    <h1>Something went wrong, please check again.</h1>
-    <h3 class="not-found">404 page</h3>
+    <h3 class="text_center my_5">Something went wrong, please check again.</h3>
+    <h5 class="text_center text_danger">404 page</h5>
   </div>
 </template>
 

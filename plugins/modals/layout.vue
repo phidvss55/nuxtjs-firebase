@@ -34,6 +34,7 @@ export default {
   },
   methods: {
     open(params) {
+      this.payload = params.payload;
       this.visible = true;
     },
     close(params) {
@@ -62,19 +63,15 @@ export default {
   position: fixed;
   top: 0;
   left: 0;
-  width: 100;
+  width: 100%;
   max-width: unset;
   height: 100vh;
   overflow-y: auto;
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: rgba(10, 10, 10, 0);
   z-index: 999;
   padding-top: 10px;
   padding-bottom: 10px;
-  &__body {
-    background: #ffffff;
-  }
 }
 </style>

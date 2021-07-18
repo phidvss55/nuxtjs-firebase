@@ -2,10 +2,11 @@
   <section class="">
     <div class="r">
       <div class="ct text_center">
-        <h3>Deck {{ $route.params.id }}: Learn English by sky albert</h3>
+        <h3 class="mb_3"><a href="#">Deck {{ $route.params.id }}</a> <br> {{ deck.name }} </h3>
         <div class="tools">
           <button class="btn btn_success">Start now</button>
-          <button class="btn btn_primary" @click.prevent="openModal">Create a card</button>
+          <button class="btn btn_primary" @click.prevent="openModal(cardModalName)">Create a card</button>
+          <button class="btn btn_warning" @click.prevent="openModal(deckModalName)">Edit Deck</button>
         </div>
         <hr class="devide" />
         <div class="r">
@@ -15,9 +16,10 @@
     </div>
 
     <!-- Modal section -->
-    <v-modal :name="modalName">
+    <v-modal :name="cardModalName">
       <div class="modal-body">
-        <h1>Create a new Deck</h1>
+        <h3 class="text_center">Create a new Deck</h3>
+        <hr>
         <form action="">
           <div class="form_group">
             <label for="">Name: </label>
@@ -33,7 +35,7 @@
             <div class="preview"></div>
           </div>
           <div class="form_group d_flex justify_content_end">
-            <button @click.prevent="closeModal" class="btn btn_danger">Close</button>
+            <button @click.prevent="closeModal(cardModalName)" class="btn btn_danger">Close</button>
             <button @click.prevent="createDeck" class="btn btn_success ml_3">Create</button>
           </div>
         </form>
@@ -43,6 +45,7 @@
 </template>
 
 <script>
+import axios from 'axios';
 import CardList from '../../../components/Cards/CardList';
 
 export default {
@@ -51,7 +54,8 @@ export default {
   },
   data() {
     return {
-      modalName: 'CreateCardModal',
+      cardModalName: 'CreateCardModal',
+      deckModalName: 'CreateDeckModal',
       cards: [
         {
           _id: 1,
@@ -73,15 +77,24 @@ export default {
       ]
     }
   },
-  validate({ params }) {
-    return /^[0-9]$/.test(params.id);
+  asyncData(context) {
+    return axios.get(`https://nuxt-vue-e5fd6-default-rtdb.firebaseio.com/decks/${context.params.id}.json`)
+    .then((res) => {
+      return { deck: res.data }
+    }).catch((err) => {
+      context.error(err);
+    })
   },
   methods: {
-    openModal() {
-      this.$modal.open({ name: this.modalName });
+    openModal(name) {
+      if (name === 'CreateDeckModal') {
+        this.$modal.open({ name: name, payload: { ...this.deck, id: this.$route.params.id } });
+      } else {
+        this.$modal.open({ name: name });
+      }
     },
-    closeModal() {
-      this.$modal.close({ name: this.modalName });
+    closeModal(name) {
+      this.$modal.close({ name: name });
     },
   }
 };
@@ -89,7 +102,7 @@ export default {
 
 <style lang="scss">
 section {
-  padding-top: 3rem;
+  padding-top: 1.5rem;
   .devide {
     margin: 2rem;
   }
