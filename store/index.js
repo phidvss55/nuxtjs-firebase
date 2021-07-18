@@ -7,6 +7,13 @@ const createStore = () => {
             decks: []
         },
         mutations: {
+            addDeck(state, newDeck) {
+                state.decks.push(newDeck)
+            },
+            editDeck(state, editDeck) {
+                const deckIndex = state.decks.findIndex(deck => deck.id === editDeck.id)
+                state.decks[deckIndex] = editDeck
+            },
             setDecks(state, decks) {
                 state.decks = decks;
             }
@@ -22,6 +29,32 @@ const createStore = () => {
                 }).catch((err) => {
                     context.error(err);
                 });
+            },
+            async addDeck(vuexContext, deckData) {
+                return await axios
+                    .post(
+                        "https://nuxt-vue-e5fd6-default-rtdb.firebaseio.com/decks.json",
+                        deckData
+                    )
+                    .then((result) => {
+                        vuexContext.commit('addDeck', { ...deckData, id: result.data.name })
+                    })
+                    .catch((err) => {
+                        console.log(err);
+                    });
+            },
+            async editDeck(vuexContext, deckData) {
+                return await axios
+                    .put(
+                        `${process.env.baseApiUrl}/decks/${deckData.id}.json`,
+                        deckData
+                    )
+                    .then((result) => {
+                        vuexContext.commit('editDeck', { ...result.data, id: deckData.id })
+                    })
+                    .catch((err) => {
+                        console.log(err);
+                    });
             },
             setDecks(vuexContext, decks) {
                 vuexContext.commit('setDecks', decks);

@@ -1,5 +1,6 @@
 <template>
   <div>
+    <event-alert class="mt_3"/>
     <div class="banner">
       <div class="thumbnail-banner"></div>
     </div>

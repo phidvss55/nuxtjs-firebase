@@ -49,6 +49,9 @@ import axios from 'axios';
 import CardList from '../../../components/Cards/CardList';
 
 export default {
+  head: {
+    title: 'Deck | Detail'
+  },
   components: {
      CardList
   },

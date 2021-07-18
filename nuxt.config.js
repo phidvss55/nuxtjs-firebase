@@ -1,7 +1,8 @@
 export default {
+  mode: 'universal',
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    title: 'nuxt-demo',
+    title: 'Nuxt in VueJs',
     htmlAttrs: {
       lang: 'en'
     },
@@ -19,6 +20,9 @@ export default {
     ]
   },
 
+  // Customize the progres-bar color
+  loading: { color: 'red', height: '5px' },
+
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [
     '~/assets/css/rhpteam.min.css',
@@ -27,7 +31,8 @@ export default {
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
-    '@/plugins/modals/v-modal.js'
+    '@/plugins/modals/v-modal.js',
+    '@/plugins/core-component.js',
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -39,9 +44,19 @@ export default {
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
+    '@nuxtjs/axios',
   ],
+
+  // Axios module configuration
+  axios: {},
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
+  },
+
+  env: {
+    baseUrl: process.env.BASE_URL || 'http://localhost:3000',
+    baseApiUrl: process.env.BASE_API_URL || 'https://nuxt-vue-e5fd6-default-rtdb.firebaseio.com',
+    fbApiKey: process.env.FIREBASE_API_KEY || 'AIzaSyAKNtzgTZgB0Cnfu8Qsit1uqUHPQShkQYM',
   }
 }

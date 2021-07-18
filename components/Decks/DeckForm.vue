@@ -30,7 +30,7 @@
       <div class="preview"></div>
     </div>
     <div class="form_group d_flex justify_content_end">
-      <button @click.prevent="closeModal" class="btn btn_danger">Close</button>
+      <button @click.prevent="closeModal" type="button" class="btn btn_danger">Close</button>
       <button class="btn btn_success ml_3" type="submit">
         {{ editDeck && editDeck.id ? 'Edit' : 'Create' }}
       </button>

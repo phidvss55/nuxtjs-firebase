@@ -18,6 +18,9 @@
 import DeckList from "../../components/Decks/DeckList";
 
 export default {
+  head: {
+    title: 'Decks | Listing'
+  },
   components: {
     DeckList,
   },
