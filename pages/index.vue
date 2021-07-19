@@ -1,6 +1,23 @@
 <template>
-  <div class="">
-    <h2>Welcome to the best corny dad jokes app on the web</h2>
+  <div>
+    <event-alert class="mt_3"/>
+    <div class="banner">
+      <div class="thumbnail-banner"></div>
+    </div>
+    <div class="popular-decks">
+      <h3 class="text_center mx_3">3 Popular Deck</h3>
+      <div class="r">
+        <div class="c_4">
+          <div class="card">Deck 1</div>
+        </div>
+        <div class="c_4">
+          <div class="card">Deck 1</div>
+        </div>
+        <div class="c_4">
+          <div class="card">Deck 1</div>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -8,12 +25,12 @@
 export default {
   head() {
     return {
-      title: "About The App",
+      title: "The Deck",
       meta: [
         {
           hid: "description",
           name: "description",
-          content: "Best place for corny dad jokes",
+          content: "Best place for improving your englisk skills",
         },
       ],
     };
@@ -21,35 +38,14 @@ export default {
 };
 </script>
 
-<style scoped>
-.container {
-  margin: 0 auto;
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-}
-
-.title {
-  font-family: "Quicksand", "Source Sans Pro", -apple-system, BlinkMacSystemFont,
-    "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-  display: block;
-  font-weight: 300;
-  font-size: 100px;
-  color: #35495e;
-  letter-spacing: 1px;
-}
-
-.subtitle {
-  font-weight: 300;
-  font-size: 42px;
-  color: #526488;
-  word-spacing: 5px;
-  padding-bottom: 15px;
-}
-
-.links {
-  padding-top: 15px;
-}
+<style lang="scss">
+  .banner {
+    height: 220px;
+    margin-top: 3rem;
+    .thumbnail-banner {
+      background: url('https://phutungxeotohyundai.com.vn/wp-content/uploads/demo-banner-1.jpg') center center;
+      height: inherit;
+      background-size: cover;
+    }
+  }
 </style>

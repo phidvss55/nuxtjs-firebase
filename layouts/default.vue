@@ -1,48 +1,55 @@
 <template>
   <div class="container">
-    <AppHeader />
-    <nuxt/>
+    <DefaultHeader />
+
+    <nuxt />
+
+    <!-- Modal section -->
+    <v-modal :name="deckModalName" v-slot="payload">
+      <div class="modal-body">
+        <h3 class="text_center">
+          {{ payload && payload.payload ? "Edit a Deck" : "Create new Deck" }}
+        </h3>
+        <hr />
+        <DeckForm
+          @submit="onSubmit"
+          :modalName="deckModalName"
+          :deck="payload.payload"
+        />
+      </div>
+    </v-modal>
+
+    <DefaultFooter />
   </div>
 </template>
 
 <script>
-import AppHeader from '../components/AppHeader.vue';
+import DeckForm from "../components/Decks/DeckForm";
+import DefaultHeader from "../components/DefaultHeader";
+import DefaultFooter from "../components/DefaultFooter";
 
 export default {
   components: {
-    AppHeader
-  }  
-}
+    DefaultHeader,
+    DefaultFooter,
+    DeckForm,
+  },
+  data() {
+    return {
+      deckModalName: "CreateDeckModal",
+    };
+  },
+  methods: {
+    async onSubmit(deckData) {
+      if (deckData && deckData.id) {
+        this.$store.dispatch('editDeck', deckData).then(() => {
+          this.$modal.close({ name: this.deckModalName });
+          this.$router.push('/decks');
+        });
+      } else {
+        this.$store.dispatch('addDeck', deckData).then(() => this.$modal.close({ name: this.deckModalName }));
+      }
+    },
+  },
+};
 </script>
-
-<style>
-  * {
-    box-sizing: border-box;
-    padding: 0;
-    margin: 0;
-  }
-
-  body {
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 1rem;
-    line-height: 1.6;
-    background: #f4f4f4;
-  }
-
-  a {
-    color: #666;
-    text-decoration: none;  
-  }
-
-  ul {
-    list-style: none;
-  }
-
-  .container {
-    max-width: 800px;
-    margin: 2rem auto;
-    overflow: hidden;
-    padding: 1rem 2rem;
-    background: #fff;
-  }
-</style>
