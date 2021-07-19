@@ -11,6 +11,12 @@
     </div>
 </template>
 
+<script>
+export default {
+    middleware: ['check_auth', 'auth']
+}
+</script>
+
 <style lang="scss">
 .page {
     display: flex;

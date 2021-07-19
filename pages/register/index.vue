@@ -67,12 +67,13 @@ export default {
     },
     onSubmit() {
       if (this.checkvalidatePassword()) {
-          this.$axios.$post(`https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=${process.env.fbApiKey}`, {
-              email: this.email, 
-              password: this.password,
-              returnSecureToken: true,
-          }).then((result) => {console.log(result) })
-          .catch((err) => { console.log(err) })
+        this.$store.dispatch('authenticateUser', {
+          email: this.email,
+          password: this.password, 
+          isLogin: false
+        }).then((result) => {
+          if (result.sucess) { this.$router.push('/decks') }
+        })
       } else {
         console.log("Wrong re_password");
       }

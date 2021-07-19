@@ -6,6 +6,7 @@
         <li><nuxt-link to="/decks">Decks</nuxt-link></li>
         <li><nuxt-link to="/profile">Profile</nuxt-link></li>
         <li><nuxt-link to="/settings">Settings</nuxt-link></li>
+        <li><nuxt-link to="/login">Login</nuxt-link></li>
       </ul>
     </nav>
   </header>

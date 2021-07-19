@@ -4,6 +4,6 @@
 
 <script>
 export default {
-    middleware: 'router-log'
+    middleware: ['check_auth', 'auth']
 }
 </script>
